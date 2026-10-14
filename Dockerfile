@@ -7,15 +7,15 @@
 #########################################
 # Get dependency images as build stages #
 #########################################
-FROM alpine/terragrunt:1.16.4 AS terragrunt
+FROM alpine/terragrunt:1.16.5 AS terragrunt
 FROM dotenvlinter/dotenv-linter:4.0.0 AS dotenv-linter
 FROM ghcr.io/terraform-linters/tflint:v0.64.0 AS tflint
 FROM alpine/helm:4.3.0 AS helm
 FROM golang:1.27-alpine AS golang
 FROM golangci/golangci-lint:v2.14.0 AS golangci-lint
-FROM goreleaser/goreleaser:v2.18.2 AS goreleaser
+FROM goreleaser/goreleaser:v2.18.3 AS goreleaser
 FROM hadolint/hadolint:v2.15.1-alpine AS dockerfile-lint
-FROM registry.k8s.io/kustomize/kustomize:v5.8.1 AS kustomize
+FROM registry.k8s.io/kustomize/kustomize:v5.8.3 AS kustomize
 FROM hashicorp/terraform:1.16.5 AS terraform
 FROM koalaman/shellcheck:v0.11.0 AS shellcheck
 FROM mstruebing/editorconfig-checker:4.0.2 AS editorconfig-checker
@@ -25,10 +25,10 @@ FROM scalameta/scalafmt:v3.11.5 AS scalafmt
 FROM zricethezav/gitleaks:v8.30.1 AS gitleaks
 FROM yoheimuta/protolint:0.58.0 AS protolint
 FROM ghcr.io/clj-kondo/clj-kondo:2026.08.04-alpine AS clj-kondo
-FROM dart:3.13.4-sdk AS dart
+FROM dart:3.13.5-sdk AS dart
 FROM mcr.microsoft.com/dotnet/sdk:10.0.401-alpine3.23 AS dotnet-sdk
 FROM composer/composer:2.10.3 AS php-composer
-FROM ghcr.io/aquasecurity/trivy:0.75.0 AS trivy
+FROM ghcr.io/aquasecurity/trivy:0.76.0 AS trivy
 FROM ghcr.io/yannh/kubeconform:v0.8.0 AS kubeconform
 
 FROM python:3.15.0rc3-alpine3.23 AS python-base
